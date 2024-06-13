@@ -83,14 +83,6 @@ resource "openstack_compute_instance_v2" "cluster_server" {
       {% endif %}
     {% endfor %}
     
-    {% for collection in ansible_init_default_collections %}
-      ansible_init_coll_{{ loop.index0 }}_name = "{{ collection.name }}"
-      ansible_init_coll_{{ loop.index0 }}_type = "{{ collection.type }}"
-      ansible_init_coll_{{ loop.index0 }}_version = "{{ collection.version }}"
-      {% if collection.source is defined %}
-        ansible_init_coll_{{ loop.index0 }}_source = "{{ collection.source }}"
-      {% endif %}
-    {% endfor %} 
   }
 }
 
